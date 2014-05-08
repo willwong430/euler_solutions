@@ -100,7 +100,27 @@ end
 # Problem 7: Find the 10_001st prime number.
 
 def problem_7
+  def is_prime?(num)
+    (2..num-1).each do |x|
+      return false if num % x == 0 
+    end
+    return true
+  end
 
+  primes = []
+  startValue = 2
+  while (primes.length < 10001)
+    primes << startValue if is_prime?(startValue)
+    startValue += 1
+  end
+
+  puts primes[-1]
+end
+
+# problem_7 ==> 104743
+# takes a long time to run, but it works!
+
+# <--------------------------------------------------------------------------->
 
 
 
