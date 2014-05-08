@@ -9,7 +9,7 @@ end
 
 # problem_1 ==> 233168
 
-# <----------------------------->
+# <--------------------------------------------------------------------------->
 
 # Problem 2: For terms in the Fibonacci sequence
 # whose values do not exceed four million, 
@@ -33,7 +33,7 @@ end
 
 # problem_2 ==> 4613732
 
-# <----------------------------->
+# <--------------------------------------------------------------------------->
 
 # Problem 3: Largest prime factor of 600851475143.
 
@@ -49,7 +49,7 @@ end
 
 # problem_3 ==> 6857
 
-# <----------------------------->
+# <--------------------------------------------------------------------------->
 
 # Problem 4: The largest palindrome made from the 
 # product of two 3-digit numbers.
@@ -70,7 +70,7 @@ end
 
 # problem_4 ==> 906609
 
-# <----------------------------->
+# <--------------------------------------------------------------------------->
 
 # Problem 5: The smallest positive number that is 
 # evenly divisible by all of the numbers from 1 to 20.
@@ -83,7 +83,24 @@ end
 
 # problem_5 ==> 232792560
 
-# <----------------------------->
+# <--------------------------------------------------------------------------->
+
+# Problem 6: Find the difference between the sum of the squares 
+# of the first one hundred natural numbers and the square of the sum.
+
+def problem_6
+	(1.upto(100).inject(:+) ** 2 ) - (1..100).inject { |sum, n| sum += n * n }
+end
+
+# problem_6 ==> 25164150
+
+
+# <--------------------------------------------------------------------------->
+# Problem 7: Find the 10_001st prime number.
+
+
+
+
 
 
 
