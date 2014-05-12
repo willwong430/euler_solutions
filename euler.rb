@@ -89,7 +89,7 @@ end
 # of the first one hundred natural numbers and the square of the sum.
 
 def problem_6
-  (1.upto(100).inject(:+) ** 2 ) - (1..100).inject { |sum, n| sum += n * n }
+  (1.upto(100).reduce(:+) ** 2 ) - (1..100).inject { |sum, n| sum += n**2 }
 end
 
 # problem_6 ==> 25164150
@@ -101,17 +101,15 @@ end
 
 def problem_7
   def is_prime?(num)
-    (2..num-1).each do |x|
-      return false if num % x == 0 
-    end
-    return true
+    (2..num-1).each { |x| return false if num % x == 0 }
+    true
   end
 
   primes = []
-  startValue = 2
+  start_value = 2
   while (primes.length < 10001)
-    primes << startValue if is_prime?(startValue)
-    startValue += 1
+    primes << start_value if is_prime?(start_value)
+    start_value += 1
   end
 
   puts primes[-1]
@@ -149,16 +147,17 @@ end
 # <--------------------------------------------------------------------------->
 
 # Problem 9: Find the Pythagorean triplet for which
-# a < b < c && a + b + c = 1000.
+# a < b < c && a + b + c = 1000. Then, find the product a * b * c.
 
 def problem_9(sum)
   array = []
   # Divide the number by two and then subtract one 
-  # to ensure there's no zero in the triplet.
+  # to ensure there are no zeros in the triplet.
   ((sum / 2) - 1).downto(1) do |n| 
     array << n
   end
   
+  # Iterate through possible c values. 
   array.each do |c|
     remainder = sum - c
     # Create and iterate another array to run through the 
@@ -172,3 +171,47 @@ def problem_9(sum)
     end
   end
 end
+
+# problem_9 ==> [200, 375, 425]
+
+# The problem asked to find the product a * b * c.
+# I'm more interested in finding the triplet. 
+# Nonetheless, the product is 31875000.
+
+# <--------------------------------------------------------------------------->
+
+# Problem 10: Find the sum of all the primes below 2_000_000.
+
+# I came up with two solutions that will return the right answer:
+
+# Using the Ruby's Prime module
+def problem_10
+  require 'prime'
+  Prime.each(2_000_000).reduce(:+)
+end
+
+# Find all the prime numbers under 2_000_000, and push them into an array.
+# Then iterate through the array to find the sum. 
+# Takes a very looooooong time. The first solution is much better.  
+def problem_10
+  def is_prime?(num)
+    (2..num-1).each do |x|
+      return false if num % x == 0 
+    end
+    return true
+  end
+
+  primes = []
+  (2..200_000_000).each do |num| 
+    while num < 2_000_000
+      if num.is_prime?
+       primes << num
+      end
+    end
+  end
+  primes.reduce(:+)
+end
+
+# problem_10 ==> 142913828922
+
+# <--------------------------------------------------------------------------->
