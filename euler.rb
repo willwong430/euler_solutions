@@ -2,9 +2,7 @@
 # that are multiples of 3 or 5. 
 
 def problem_1
-  0.upto(999).reduce do |sum, num|
-    num % 3 == 0 || num % 5 == 0 ? sum + num : sum
-  end
+  0.upto(999).reduce { |sum, num| num % 3 == 0 || num % 5 == 0 ? sum + num : sum }
 end
 
 # problem_1 ==> 233168
@@ -27,7 +25,6 @@ def problem_2
     prev = current
     current = next_up
   end
-
   sum
 end
 
@@ -61,9 +58,7 @@ def problem_4
 
   max = 0 
   100.upto(999).each do |a|
-    a.upto(999).each do |b|
-      max = a * b if palindrome?(a * b) && (a * b) > max
-    end
+    a.upto(999).each { |b| max = a * b if palindrome?(a * b) && (a * b) > max }
   end
   max
 end
