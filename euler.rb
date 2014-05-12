@@ -153,10 +153,8 @@ def problem_9(sum)
   array = []
   # Divide the number by two and then subtract one 
   # to ensure there are no zeros in the triplet.
-  ((sum / 2) - 1).downto(1) do |n| 
-    array << n
-  end
-  
+  ((sum / 2) - 1).downto(1) { |n| array << n }
+
   # Iterate through possible c values. 
   array.each do |c|
     remainder = sum - c
@@ -195,9 +193,7 @@ end
 # Takes a very looooooong time. The first solution is much better.  
 def problem_10
   def is_prime?(num)
-    (2..num-1).each do |x|
-      return false if num % x == 0 
-    end
+    (2..num-1).each { |x| return false if num % x == 0 }
     return true
   end
 
