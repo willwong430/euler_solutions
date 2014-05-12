@@ -1,6 +1,7 @@
 My Project Euler Solutions
 ===============
-<h2>Description</h2>
+<h2>Description
 
-These are my solutions to the first ten <a href='www.projecteuler.net'>Project Euler </a> problems.
-Practicing CS fundamentals in Ruby.
+My swing at the fun and challenging [Project Euler](http://projecteuler.net/problems) problems. 
+
+I hope to show my familiarity with the Ruby language and CS fundamentals.
